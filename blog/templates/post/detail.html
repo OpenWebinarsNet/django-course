@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    {{ post.body }}
+    <a href="{% url 'blog:post_list' %}">Regresar</a>
+{% endblock %}

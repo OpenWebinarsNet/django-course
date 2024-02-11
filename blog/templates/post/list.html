@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Mi blog{% endblock%}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <br />
+        <a href="{% url 'blog:create_post' %}">+ Agregar nuevo post</a>
+    {% endif %}
+    <h1>Mis publicaciones</h1>
+    {% for post in posts %}
+        <h2>
+            <a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a>
+        </h2>
+        {{ post.body|truncatewords:30 }}
+    {% endfor %}
+{% endblock %}
